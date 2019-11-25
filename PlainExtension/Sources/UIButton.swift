@@ -6,8 +6,6 @@
 //
 //
 
-import Foundation
-
 public extension UIButton {
     static func custom() -> UIButton {
         return UIButton(type: .custom)
@@ -18,5 +16,9 @@ public extension UIButton {
         setTitleColor(color, for: state)
         titleLabel?.font = font
         self.backgroundColor = backgroundColor
+    }
+    
+    func setBackgroundColor(color: UIColor, for state: UIControl.State = .normal) {
+        setBackgroundImage(UIImage.image(from: color)?.resizableImage(withCapInsets: .zero), for: state)
     }
 }

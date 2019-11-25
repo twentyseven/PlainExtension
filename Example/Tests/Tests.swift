@@ -3,11 +3,12 @@ import PlainExtension
 
 class Tests: XCTestCase {
     let view = UIView(backgroundColor: .white)
+    let test1 = UIView()
+    let test2 = UIView()
+    let test3 = UIView()
+    
     override func setUp() {
         super.setUp()
-        let test1 = UIView()
-        let test2 = UIView()
-        let test3 = UIView()
         view.addSubViews(test1, test2, test3)
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -20,6 +21,7 @@ class Tests: XCTestCase {
     func testView() {
         XCTAssert(view.subviews.count == 3, "Pass")
         XCTAssert(view.backgroundColor == .white, "Pass")
+        test3.fillInSuperView()
     }
     
 //    func testPerformanceExample() {

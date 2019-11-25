@@ -6,20 +6,34 @@
 //  
 //
 
-import Foundation
-
 public extension UIView {
     convenience init(backgroundColor: UIColor? = nil) {
         self.init()
         self.backgroundColor = backgroundColor
     }
     
+    /// Adds all views from array to the end of receiver's list of subviews
+    /// - Parameter subviews: List of views
     func addSubViews(_ subviews: UIView...) {
         subviews.forEach(addSubview)
     }
     
-    // MARK: - Auto Layout
+    func hug(_ axises: [NSLayoutConstraint.Axis], priority: UILayoutPriority = .required) {
+        axises.forEach { (axis) in
+            self.setContentHuggingPriority(priority, for: axis)
+        }
+    }
     
+    func expand(_ axises: [NSLayoutConstraint.Axis], priority: UILayoutPriority = .required) {
+        axises.forEach { (axis) in
+            self.setContentCompressionResistancePriority(priority, for: axis)
+        }
+    }
+}
+
+
+// MARK: - Auto Layout
+public extension UIView {
     func fillInSuperView(inset: UIEdgeInsets = .zero) {
         guard let superview = superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
