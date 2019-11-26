@@ -12,8 +12,8 @@ public extension UIView {
         self.backgroundColor = backgroundColor
     }
     
-    /// Adds all views from array to the end of receiver's list of subviews
-    /// - Parameter subviews: List of views
+    /// Adds all views from array to the end of receiver's list of subviews.
+    /// - Parameter subviews: List of views.
     func addSubViews(_ subviews: UIView...) {
         subviews.forEach(addSubview)
     }
@@ -37,9 +37,9 @@ public extension UIView {
     func fillInSuperView(inset: UIEdgeInsets = .zero) {
         guard let superview = superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: superview, attribute: .leading, multiplier: 1, constant: inset.left).isActive = true
-        NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: superview, attribute: .trailing, multiplier: 1, constant: -inset.right).isActive = true
-        NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: superview, attribute: .top, multiplier: 1, constant: inset.top).isActive = true
-        NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: superview, attribute: .bottom, multiplier: 1, constant: -inset.bottom).isActive = true
+        NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: superview, attribute: .leading, multiplier: 1, constant: inset.left).active()
+        NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: superview, attribute: .trailing, multiplier: 1, constant: -inset.right).active()
+        NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: superview, attribute: .top, multiplier: 1, constant: inset.top).active()
+        NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: superview, attribute: .bottom, multiplier: 1, constant: -inset.bottom).active()
     }
 }

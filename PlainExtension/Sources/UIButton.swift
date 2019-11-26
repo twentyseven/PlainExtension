@@ -11,11 +11,12 @@ public extension UIButton {
         return UIButton(type: .custom)
     }
     
-    func set(title: String, color: UIColor, font: UIFont? = nil, state: UIControl.State) {
+    func set(title: String?, color: UIColor?, font: UIFont? = nil, state: UIControl.State) {
         setTitle(title, for: state)
         setTitleColor(color, for: state)
-        titleLabel?.font = font
-        self.backgroundColor = backgroundColor
+        if let font = font {
+            titleLabel?.font = font
+        }
     }
     
     func setBackgroundColor(color: UIColor, for state: UIControl.State = .normal) {

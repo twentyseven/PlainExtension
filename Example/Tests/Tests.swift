@@ -1,5 +1,5 @@
 import XCTest
-import PlainExtension
+import Pods_PlainExtension_Tests
 
 class Tests: XCTestCase {
     let view = UIView(backgroundColor: .white)
