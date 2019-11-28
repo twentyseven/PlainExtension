@@ -18,20 +18,18 @@ public extension UIView {
         subviews.forEach(addSubview)
     }
     
-    func hug(_ axises: [NSLayoutConstraint.Axis], priority: UILayoutPriority = .required) {
-        axises.forEach { (axis) in
-            self.setContentHuggingPriority(priority, for: axis)
+    func hug(_ items: (axis: NSLayoutConstraint.Axis, priority: UILayoutPriority)...) {
+        items.forEach { (item) in
+            self.setContentHuggingPriority(item.priority, for: item.axis)
         }
     }
-    
-    func expand(_ axises: [NSLayoutConstraint.Axis], priority: UILayoutPriority = .required) {
-        axises.forEach { (axis) in
-            self.setContentCompressionResistancePriority(priority, for: axis)
+
+    func expand(_ items: (axis: NSLayoutConstraint.Axis, priority: UILayoutPriority)...) {
+        items.forEach { (item) in
+            self.setContentCompressionResistancePriority(item.priority, for: item.axis)
         }
     }
 }
-
-// MARK: - Convenient init
 
 // MARK: - Auto Layout
 public extension UIView {

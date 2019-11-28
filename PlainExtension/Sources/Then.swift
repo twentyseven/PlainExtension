@@ -15,7 +15,8 @@ extension Then where Self: AnyObject {
     ///     let view = UIButton(type: .custom).then {
     ///       $0.setTitle("Hi", for: .normal) = .center
     ///     }
-    func then(_ then: (Self) -> ()) -> Self {
+    /// - Parameter then: A customization block of code
+    func then(_ then: ((Self) -> ())) -> Self {
         then(self)
         return self
     }

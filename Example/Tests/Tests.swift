@@ -10,6 +10,8 @@ class Tests: XCTestCase {
     override func setUp() {
         super.setUp()
         view.addSubViews(test1, test2, test3)
+        view.hug((.vertical, .required), (.horizontal, .required))
+        view.hug((axis: .horizontal, priority: .required), (axis: .vertical, priority: .required))
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     

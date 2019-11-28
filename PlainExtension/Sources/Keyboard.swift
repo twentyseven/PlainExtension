@@ -5,7 +5,6 @@
 //  Created by MORITANAOKI on 2015/12/14.
 //  Copyright © 2015年 molabo. All rights reserved.
 //
-import UIKit
 
 // https://github.com/morizotter/KeyboardObserver
 public enum KeyboardEventType: CaseIterable {
