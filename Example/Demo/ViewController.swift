@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.saveState()
-        navigationController?.makeTransparent(animated: true)
+        navigationController?.navigationBar.makeTransparent(animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

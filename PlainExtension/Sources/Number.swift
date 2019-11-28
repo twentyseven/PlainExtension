@@ -10,7 +10,7 @@ public extension FixedWidthInteger {
     
     /// Quick converter Int to CGFloat with .f notation.
     ///
-    /// Use 0.f instead of CGFloat(0).
+    /// Use `0.f` instead of `CGFloat(0)`.
     var f: CGFloat {
         return CGFloat(self)
     }

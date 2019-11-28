@@ -7,29 +7,24 @@
 //
 
 public extension UINavigationController {
-    /// Saved bar state for restoring.
-    ///
-    /// `savedState` is shared between UINavigationController instances.
-    private static var savedState: NavigationBarState?
-
-    /// Update navigation transparent style with option to save current state for restoring.
-    /// - Parameters:
-    ///   - transparent: Specify `true` for completely transparent bar. Default is `true`.
-    ///   - animated: Default is `false`.
-    func makeTransparent(_ transparent: Bool = true, animated: Bool = false) {
-        navigationBar.animate(duration: animated ? 0.33 : 0) {
-            navigationBar.setBackgroundImage(transparent ? UIImage() : nil, for: .default)
-            navigationBar.shadowImage = transparent ? UIImage() : nil
-            navigationBar.isTranslucent = transparent
+    private static var savedStateKey = 0
+    
+    /// Associated object to store navigation bar state for restoring.
+    private static var savedState: NavigationBarState? {
+        get {
+            return objc_getAssociatedObject(self, &Self.savedStateKey) as? NavigationBarState
+        }
+        set {
+            objc_setAssociatedObject(self, &Self.savedStateKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 
-    /// Save current state to restore later with `restoreState()`
+    /// Save current navigation bar state to restore later with `restoreState()`
     func saveState() {
         Self.savedState = NavigationBarState(navigationBar)
     }
 
-    /// Restore previous saved state by `saveState()`.
+    /// Restore previous saved navigation bar state by `saveState()`.
     /// - Parameter animated: Default is `false`.
     func restoreState(animated: Bool = false) {
         if let state = Self.savedState {
@@ -40,6 +35,19 @@ public extension UINavigationController {
 }
 
 public extension UINavigationBar {
+    
+    /// Update navigation transparent style with option to save current state for restoring.
+    /// - Parameters:
+    ///   - transparent: Specify `true` for completely transparent bar. Default is `true`.
+    ///   - animated: Default is `false`.
+    func makeTransparent(_ transparent: Bool = true, animated: Bool = false) {
+        animate(duration: animated ? 0.33 : 0) {
+            setBackgroundImage(transparent ? UIImage() : nil, for: .default)
+            shadowImage = transparent ? UIImage() : nil
+            isTranslucent = transparent
+        }
+    }
+
     func makeBackgroundColor(_ color: UIColor?, for barMetrics: UIBarMetrics, animated: Bool = false) {
         animate(duration: animated ? 0.33 : 0) {
             setBackgroundImage(UIImage.image(from: color), for: barMetrics)

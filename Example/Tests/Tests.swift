@@ -1,5 +1,5 @@
 import XCTest
-import Pods_PlainExtension_Tests
+import PlainExtension
 
 class Tests: XCTestCase {
     let view = UIView(backgroundColor: .white)
@@ -19,9 +19,10 @@ class Tests: XCTestCase {
     }
         
     func testView() {
-        XCTAssert(view.subviews.count == 3, "Pass")
-        XCTAssert(view.backgroundColor == .white, "Pass")
-        test3.fillInSuperView()
+        XCTAssert(view.subviews.count == 3)
+        XCTAssert(view.backgroundColor == .white)
+        XCTAssert(1.string == "1")
+        XCTAssert(1.2.string == "1.2")
     }
     
 //    func testPerformanceExample() {

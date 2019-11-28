@@ -13,7 +13,6 @@
 		43606159238C9E7A004271AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43606157238C9E7A004271AC /* Main.storyboard */; };
 		4360615B238C9E7C004271AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4360615A238C9E7C004271AC /* Assets.xcassets */; };
 		4360615E238C9E7C004271AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4360615C238C9E7C004271AC /* LaunchScreen.storyboard */; };
-		4360616E238CA73D004271AC /* Pods_PlainExtension_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4360616D238CA73D004271AC /* Pods_PlainExtension_Tests.framework */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,8 +25,6 @@
 		4360615A238C9E7C004271AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4360615D238C9E7C004271AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4360615F238C9E7C004271AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		43606169238CA5CA004271AC /* PlainExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlainExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4360616D238CA73D004271AC /* Pods_PlainExtension_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_PlainExtension_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		501A8A6C6ADDD8F6F6465676 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* PlainExtension_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlainExtension_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,7 +40,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4360616E238CA73D004271AC /* Pods_PlainExtension_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,8 +79,6 @@
 		5C9EDD1960DF5419643C8B69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4360616D238CA73D004271AC /* Pods_PlainExtension_Tests.framework */,
-				43606169238CA5CA004271AC /* PlainExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

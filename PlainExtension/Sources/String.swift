@@ -19,6 +19,8 @@ public extension StringProtocol {
 }
 
 public extension LosslessStringConvertible {
+    
+    /// Use `0.1.string` instead of `String(0.1)`
     var string: String { .init(self) }
 }
 
