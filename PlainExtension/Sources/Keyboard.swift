@@ -104,8 +104,6 @@ public enum KeyboardState {
 
 public typealias KeyboardEventClosure = ((_ event: KeyboardEvent) -> Void)
 
-
-
 /// Convenient observer for keyboard frame changing.
 ///
 ///     KeyboardObserver().observe { (event) in
