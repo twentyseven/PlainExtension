@@ -1,6 +1,0 @@
-use_frameworks!
-target 'PlainExtension_Tests' do
-  pod 'PlainExtension', :path => '../'
-  
-  
-end

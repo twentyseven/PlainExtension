@@ -104,6 +104,17 @@ public enum KeyboardState {
 
 public typealias KeyboardEventClosure = ((_ event: KeyboardEvent) -> Void)
 
+
+
+/// Convenient observer for keyboard frame changing.
+///
+///     KeyboardObserver().observe { (event) in
+///         switch event.type {
+///         case .didChangeFrame:
+///             print(event.keyboardFrameEnd)
+///         default: break
+///         }
+///     }
 open class KeyboardObserver {
     open var state = KeyboardState.initial
     open var isEnabled = true
