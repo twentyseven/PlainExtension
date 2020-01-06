@@ -7,6 +7,9 @@
 //
 
 public extension UIColor {
+    /**
+    Init UIColor with HEX components
+    */
     static func withHex(string: String, alpha: CGFloat = 1) -> UIColor? {
         guard !string.isEmpty else { return nil }
         var hex = string
@@ -39,5 +42,29 @@ public extension UIColor {
         let hexScanner = Scanner(string: hexValue)
         hexScanner.scanHexInt64(&value)
         return value
+    }
+    
+    static func hsba(_ h: CGFloat, _ s: CGFloat, _ b: CGFloat, _ a: CGFloat) -> UIColor {
+        return UIColor(hue: h, saturation: s, brightness: b, alpha: a)
+    }
+    
+    /**
+    Decomposes UIColor to its RGB components
+    */
+    var rgbColor: UIColor {
+        get {
+            var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
+            self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+            return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+        }
+    }
+
+    /**
+     Decomposes UIColor to its HSBA components
+     */
+    var hsbColor: UIColor {
+        var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        self.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+        return UIColor(hue: h, saturation: s, brightness: b, alpha: a)
     }
 }
