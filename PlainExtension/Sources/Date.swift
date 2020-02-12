@@ -6,7 +6,7 @@
 //
 //
 
-extension Date {
+public extension Date {
     static var yesterday: Date { return Date().dayBefore }
     static var tomorrow: Date { return Date().dayAfter }
     var dayBefore: Date {

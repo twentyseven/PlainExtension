@@ -6,9 +6,9 @@
 //
 //
 
-protocol Then {}
+public protocol Then {}
 
-extension Then where Self: AnyObject {
+public extension Then where Self: AnyObject {
     
     /// Allow customize object after init.
     ///
