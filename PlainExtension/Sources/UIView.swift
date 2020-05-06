@@ -14,7 +14,7 @@ public extension UIView {
     
     /// Adds all views from array to the end of receiver's list of subviews.
     /// - Parameter subviews: List of views.
-    func addSubViews(_ subviews: UIView...) {
+    func addSubviews(_ subviews: UIView...) {
         subviews.forEach(addSubview)
     }
     

@@ -7,15 +7,22 @@
 //
 
 public extension UIAlertController {
-    static func showAlert(title: String?, message: String?) {
+    typealias BlankCompletionBlock = (()->())
+    private static var topVC: UIViewController? {
+        return UIApplication.shared.keyWindow?.rootViewController?.topMostViewController()
+    }
+    
+    static func showAlert(title: String?, message: String?, action: BlankCompletionBlock? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+            action?()
+        }))
+        topVC?.present(alert, animated: true, completion: nil)
     }
 
-    static func showError(title: String? = "Error", _ error: Error?) {
+    static func showError(title: String? = "Error", _ error: Error?, action: BlankCompletionBlock? = nil) {
         guard let error = error else { return }
-        showAlert(title: title, message: error.localizedDescription)
+        showAlert(title: title, message: error.localizedDescription, action: action)
     }
 
     static func showDebugError(title: String? = "Error", _ error: Error?) {
@@ -32,6 +39,6 @@ public extension UIAlertController {
                 alert.addAction(action)
             }
         }
-        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+        topVC?.present(alert, animated: true, completion: nil)
     }
 }

@@ -22,4 +22,15 @@ public extension UIButton {
     func setBackgroundColor(color: UIColor, for state: UIControl.State = .normal) {
         setBackgroundImage(UIImage.image(from: color)?.resizableImage(withCapInsets: .zero), for: state)
     }
+    
+    func setImage(_ image: UIImage?, for state: UIControl.State, tintColor: UIColor) {
+        setImage(image?.withRenderingMode(.alwaysTemplate), for: state)
+        self.tintColor = tintColor
+    }
+    
+    func setBackgroundImage(_ image: UIImage?, for state: UIControl.State, tintColor: UIColor) {
+        setBackgroundImage(image?.withRenderingMode(.alwaysTemplate), for: state)
+        self.tintColor = tintColor
+    }
+
 }

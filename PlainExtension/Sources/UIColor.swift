@@ -49,6 +49,13 @@ public extension UIColor {
     }
     
     /**
+    Init UIColor with RGB components
+    */
+    static func rgb(_ r: CGFloat, _ g: CGFloat, _ b: CGFloat, _ a: CGFloat = 1) -> UIColor {
+        return UIColor(red: r / 255, green: g / 255, blue: b / 255, alpha: a)
+    }
+    
+    /**
     Decomposes UIColor to its RGB components
     */
     var rgbColor: UIColor {

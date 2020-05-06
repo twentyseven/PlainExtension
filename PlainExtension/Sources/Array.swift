@@ -19,6 +19,16 @@ public extension RangeReplaceableCollection where Element: Equatable {
     }
     
     @discardableResult
+    mutating func union(_ element: Element, index: Self.Index) -> (appended: Bool, memberAfterAppend: Element) {
+        if let index = firstIndex(of: element) {
+            return (false, self[index])
+        } else {
+            insert(element, at: index)
+            return (true, element)
+        }
+    }
+
+    @discardableResult
     mutating func remove(_ element: Element) -> (appended: Bool, memberAfterAppend: Element) {
         if let index = firstIndex(of: element) {
             remove(at: index)
