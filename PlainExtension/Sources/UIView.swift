@@ -42,21 +42,21 @@ public extension UIView {
         NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: superview, attribute: .bottom, multiplier: 1, constant: -inset.bottom).active()
     }
     
-    func centerInSuperView() {
+    func centerX(to view: UIView? = nil) {
+        let v = view ?? superview
         translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 1, constant: 0).active()
-        NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: superview, attribute: .centerY, multiplier: 1, constant: 0).active()
-    }
-    
-    func centerXInSuperView() {
-        translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 1, constant: 0).active()
+        NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: v, attribute: .centerX, multiplier: 1, constant: 0).active()
 
     }
 
-    func centerYInSuperView() {
+    func centerY(to view: UIView? = nil) {
+        let v = view ?? superview
         translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: superview, attribute: .centerY, multiplier: 1, constant: 0).active()
+        NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: v, attribute: .centerY, multiplier: 1, constant: 0).active()
     }
 
+    func center(to view: UIView? = nil) {
+        centerX()
+        centerY()
+    }
 }

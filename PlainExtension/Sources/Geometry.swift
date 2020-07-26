@@ -22,15 +22,15 @@ public extension CGPoint {
 
 public extension CGSize {
     init(_ width: Int, _ height: Int) {
-        self.init(width: width, height: width)
+        self.init(width: width, height: height)
     }
     
     init(_ width: CGFloat, _ height: CGFloat) {
-        self.init(width: width, height: width)
+        self.init(width: width, height: height)
     }
 
     init(_ width: Double, _ height: Double) {
-        self.init(width: width, height: width)
+        self.init(width: width, height: height)
     }
 }
 

@@ -6,9 +6,43 @@
 //
 //
 
+// MARK: - Navigation with completion
+
+public extension UINavigationController {
+    func pushToViewController(_ viewController: UIViewController, animated: Bool = true, completion: @escaping () -> Void) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        pushViewController(viewController, animated: animated)
+        CATransaction.commit()
+    }
+
+    func popViewController(animated: Bool = true, completion: @escaping () -> Void) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        popViewController(animated: animated)
+        CATransaction.commit()
+    }
+
+    func popToViewController(_ viewController: UIViewController, animated: Bool = true, completion: @escaping () -> Void) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        popToViewController(viewController, animated: animated)
+        CATransaction.commit()
+    }
+
+    func popToRootViewController(animated: Bool = true, completion: @escaping () -> Void) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        popToRootViewController(animated: animated)
+        CATransaction.commit()
+    }
+}
+
+// MARK: - Update navigation bar state
+
 public extension UINavigationController {
     private static var savedStateKey = 0
-    
+
     /// Associated object to store navigation bar state for restoring.
     private static var savedState: NavigationBarState? {
         get {
@@ -35,7 +69,6 @@ public extension UINavigationController {
 }
 
 public extension UINavigationBar {
-    
     /// Update navigation transparent style with option to save current state for restoring.
     /// - Parameters:
     ///   - transparent: Specify `true` for completely transparent bar. Default is `true`.

@@ -7,10 +7,18 @@
 //
 
 public extension UIButton {
-    static func custom() -> UIButton {
-        return UIButton(type: .custom)
+    static func custom(title: String? = nil, color: UIColor? = nil) -> Self {
+        let button = Self(type: .custom)
+        button.set(title: title, color: color, state: .normal)
+        return button
     }
     
+    static func custom(_ image: UIImage? = nil) -> Self {
+        let button = Self(type: .custom)
+        button.setImage(image, for: .normal)
+        return button
+    }
+
     func set(title: String?, color: UIColor?, font: UIFont? = nil, state: UIControl.State) {
         setTitle(title, for: state)
         setTitleColor(color, for: state)
@@ -23,12 +31,12 @@ public extension UIButton {
         setBackgroundImage(UIImage.image(from: color)?.resizableImage(withCapInsets: .zero), for: state)
     }
     
-    func setImage(_ image: UIImage?, for state: UIControl.State, tintColor: UIColor) {
+    func setImage(_ image: UIImage?, for state: UIControl.State, tintColor: UIColor?) {
         setImage(image?.withRenderingMode(.alwaysTemplate), for: state)
         self.tintColor = tintColor
     }
     
-    func setBackgroundImage(_ image: UIImage?, for state: UIControl.State, tintColor: UIColor) {
+    func setBackgroundImage(_ image: UIImage?, for state: UIControl.State, tintColor: UIColor?) {
         setBackgroundImage(image?.withRenderingMode(.alwaysTemplate), for: state)
         self.tintColor = tintColor
     }

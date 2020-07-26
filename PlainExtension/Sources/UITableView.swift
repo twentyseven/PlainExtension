@@ -47,14 +47,24 @@ public extension UITableView {
 // MARK: - Collection View
 
 extension UICollectionViewCell: ReusableView {}
+extension UICollectionReusableView: ReusableView {}
 
 public extension UICollectionView {
     func register<T: UICollectionViewCell>(_: T.Type) {
         register(T.self, forCellWithReuseIdentifier: T.defaultReuseIdentifier)
     }
 
+    func register<T: UICollectionReusableView>(_: T.Type, viewKind: String) {
+        register(T.self, forSupplementaryViewOfKind: viewKind, withReuseIdentifier: T.defaultReuseIdentifier)
+    }
+
     func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
         let cell = dequeueReusableCell(withReuseIdentifier: T.defaultReuseIdentifier, for: indexPath) as! T
         return cell
+    }
+    
+    func dequeueReusableView<T: UICollectionReusableView>(for indexPath: IndexPath, ofKind kind: String) -> T {
+        let view = dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: T.defaultReuseIdentifier, for: indexPath) as! T
+        return view
     }
 }
