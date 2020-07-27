@@ -46,7 +46,6 @@ public extension UITableView {
 
 // MARK: - Collection View
 
-extension UICollectionViewCell: ReusableView {}
 extension UICollectionReusableView: ReusableView {}
 
 public extension UICollectionView {
