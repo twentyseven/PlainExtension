@@ -7,9 +7,9 @@
 //
 
 public extension UIButton {
-    static func custom(title: String? = nil, color: UIColor? = nil) -> Self {
+    static func custom(title: String? = nil, color: UIColor? = nil, font: UIFont? = nil) -> Self {
         let button = Self(type: .custom)
-        button.set(title: title, color: color, state: .normal)
+        button.set(title: title, color: color, font: font, state: .normal)
         return button
     }
     
@@ -27,7 +27,11 @@ public extension UIButton {
         }
     }
     
-    func setBackgroundColor(color: UIColor, for state: UIControl.State = .normal) {
+    func setBackgroundColor(color: UIColor?, for state: UIControl.State = .normal) {
+        guard let color = color else {
+            setBackgroundImage(nil, for: state)
+            return
+        }
         setBackgroundImage(UIImage.image(from: color)?.resizableImage(withCapInsets: .zero), for: state)
     }
     

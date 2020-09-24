@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PlainExtension'
-  s.version          = '0.0.7'
+  s.version          = '0.0.8'
   s.summary          = 'Handy Swift extensions.'
   s.description      = <<-DESC
   A plain collection of Swift extensions to help speed up development.

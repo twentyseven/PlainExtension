@@ -36,12 +36,25 @@ public extension UIView {
     func fillInSuperView(inset: UIEdgeInsets = .zero) {
         guard let superview = superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: superview, attribute: .leading, multiplier: 1, constant: inset.left).active()
-        NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: superview, attribute: .trailing, multiplier: 1, constant: -inset.right).active()
-        NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: superview, attribute: .top, multiplier: 1, constant: inset.top).active()
-        NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: superview, attribute: .bottom, multiplier: 1, constant: -inset.bottom).active()
+        NSLayoutConstraint.activate([
+            topAnchor.constraint(equalTo: superview.topAnchor, constant: inset.top),
+            leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: inset.left),
+            bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -inset.bottom),
+            rightAnchor.constraint(equalTo: superview.rightAnchor, constant: -inset.right),
+        ])
     }
     
+    func fillInSuperViewSafeArea(inset: UIEdgeInsets = .zero) {
+        guard let superview = superview else { return }
+        translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor, constant: inset.top),
+            leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor, constant: inset.left),
+            bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -inset.bottom),
+            rightAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.rightAnchor, constant: -inset.right),
+        ])
+    }
+
     func centerX(to view: UIView? = nil) {
         let v = view ?? superview
         translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +69,16 @@ public extension UIView {
     }
 
     func center(to view: UIView? = nil) {
-        centerX()
-        centerY()
+        centerX(to: view)
+        centerY(to: view)
+    }
+    
+    func addConstraintsWithFormat(format: String, options: NSLayoutConstraint.FormatOptions = [], views: UIView...) {
+        var viewsInfo = [String: UIView]()
+        for (index, view) in views.enumerated() {
+            view.translatesAutoresizingMaskIntoConstraints = false
+            viewsInfo["v\(index)"] = view
+        }
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: format, options: options, metrics: nil, views: viewsInfo))
     }
 }

@@ -72,3 +72,10 @@ public extension OSLog {
         }
     }
 }
+
+public extension OSLog {
+    func logError(_ error: Error?) {
+        guard let error = error else { return }
+        self.error("%@:%@:%@: Error fetching document: %@", ("\(#file)" as NSString).lastPathComponent, "\(#function)", "\(#line)", "\(String(describing: error))")
+    }
+}
