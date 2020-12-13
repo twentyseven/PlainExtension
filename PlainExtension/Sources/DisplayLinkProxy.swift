@@ -18,6 +18,7 @@ public class DisplayLinkProxy {
         self.handler = handler
         displaylink = CADisplayLink(target: self, selector: #selector(onDisplayUpdate(_:)))
         displaylink?.add(to: RunLoop.current, forMode: .common)
+        pause()
     }
 
     @objc func onDisplayUpdate(_ sender: CADisplayLink) {

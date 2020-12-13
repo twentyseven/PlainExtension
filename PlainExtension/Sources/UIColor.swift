@@ -34,7 +34,7 @@ public extension UIColor {
         let blueHex = "0x\(hex[5])\(hex[6])"
         let blue = Self.hexValueToUnsigned(hexValue: blueHex)
         
-        return UIColor(red: (red/255).f, green: (green/255).f, blue: (blue/255).f, alpha: alpha)
+        return UIColor(red: (red.f/255), green: (green.f/255), blue: (blue.f/255), alpha: alpha)
     }
 
     private static func hexValueToUnsigned(hexValue: String) -> UInt64 {
