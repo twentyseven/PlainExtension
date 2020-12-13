@@ -38,3 +38,40 @@ public extension RangeReplaceableCollection where Element: Equatable {
         }
     }
 }
+
+public extension Sequence {
+
+    /// Return the sequence with all duplicates removed.
+    ///
+    /// Duplicate, in this case, is defined as returning `true` from `comparator`.
+    ///
+    /// - note: Taken from stackoverflow.com/a/46354989/3141234
+    func uniqued(comparator: @escaping (Element, Element) throws -> Bool) rethrows -> [Element] {
+        var buffer: [Element] = []
+
+        for element in self {
+            // If element is already in buffer, skip to the next element
+            if try buffer.contains(where: { try comparator(element, $0) }) {
+                continue
+            }
+
+            buffer.append(element)
+        }
+
+        return buffer
+    }
+}
+
+public extension Sequence where Element: Hashable {
+
+    /// Return the sequence with all duplicates removed.
+    ///
+    /// i.e. `[ 1, 2, 3, 1, 2 ].uniqued() == [ 1, 2, 3 ]`
+    ///
+    /// - note: Taken from stackoverflow.com/a/46354989/3141234, as
+    ///         per @Alexander's comment.
+    func uniqued() -> [Element] {
+        var seen = Set<Element>()
+        return self.filter { seen.insert($0).inserted }
+    }
+}

@@ -3,7 +3,7 @@
 //  PlainExtension
 //
 //  Created by Trong Bui Tuan on 11/25/19.
-//  
+//
 //
 
 public extension UIView {
@@ -55,22 +55,22 @@ public extension UIView {
         ])
     }
 
-    func centerX(to view: UIView? = nil) {
+    func centerX(to view: UIView? = nil, offset: CGFloat = 0) {
         let v = view ?? superview
         translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: v, attribute: .centerX, multiplier: 1, constant: 0).active()
+        NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: v, attribute: .centerX, multiplier: 1, constant: offset).active()
 
     }
 
-    func centerY(to view: UIView? = nil) {
+    func centerY(to view: UIView? = nil, offset: CGFloat = 0) {
         let v = view ?? superview
         translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: v, attribute: .centerY, multiplier: 1, constant: 0).active()
+        NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: v, attribute: .centerY, multiplier: 1, constant: offset).active()
     }
 
-    func center(to view: UIView? = nil) {
-        centerX(to: view)
-        centerY(to: view)
+    func center(to view: UIView? = nil, offset: CGPoint = .zero) {
+        centerX(to: view, offset: offset.x)
+        centerY(to: view, offset: offset.y)
     }
     
     func addConstraintsWithFormat(format: String, options: NSLayoutConstraint.FormatOptions = [], views: UIView...) {

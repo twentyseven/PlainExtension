@@ -3,7 +3,7 @@
 //  PlainExtension
 //
 //  Created by Trong Bui Tuan on 12/14/19.
-//  
+//
 //
 
 public extension CGPoint {

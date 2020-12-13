@@ -118,15 +118,11 @@ open class KeyboardObserver {
     open var isEnabled = true
     fileprivate var eventClosures = [KeyboardEventClosure]()
     
-    private func remove() {
+    deinit {
         eventClosures.removeAll()
         KeyboardEventType.allEventNames().forEach {
             NotificationCenter.default.removeObserver(self, name: $0, object: nil)
         }
-    }
-    
-    deinit {
-        remove()
     }
     
     public init() {

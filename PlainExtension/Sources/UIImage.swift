@@ -3,7 +3,7 @@
 //  PlainExtension
 //
 //  Created by Trong Bui Tuan on 11/25/19.
-//  
+//
 //
 
 public extension UIImage {
