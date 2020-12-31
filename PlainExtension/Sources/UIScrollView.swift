@@ -18,13 +18,13 @@ public extension UIScrollView {
     func scrollTo(edge: UIRectEdge, animated: Bool) {
         let target: CGPoint
         switch edge {
-        case UIRectEdge.top:
+        case .top:
             target = CGPoint(x: contentOffset.x, y: offsetFrame.minY)
-        case UIRectEdge.bottom:
+        case .bottom:
             target = CGPoint(x: contentOffset.x, y: offsetFrame.maxY)
-        case UIRectEdge.left:
+        case .left:
             target = CGPoint(x: offsetFrame.minX, y: contentOffset.y)
-        case UIRectEdge.right:
+        case .right:
             target = CGPoint(x: offsetFrame.maxX, y: contentOffset.y)
         default:
             return

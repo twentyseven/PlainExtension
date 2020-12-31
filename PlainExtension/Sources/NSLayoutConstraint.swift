@@ -7,7 +7,7 @@
 //
 
 public extension NSLayoutConstraint {
-    func active() {
-        isActive = true
+    func active(_ active: Bool = true) {
+        isActive = active
     }
 }

@@ -34,15 +34,9 @@ public extension BidirectionalCollection {
 // MARK: - String size calculation
 
 public extension String {
-    func sizeThatFit(width: CGFloat, font: UIFont) -> CGSize {
-        let maxSize = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let actualSize = self.boundingRect(with: maxSize, options: [.usesLineFragmentOrigin], attributes: [.font: font], context: nil)
-        return actualSize.size
-    }
-
-    func sizeThatFit(height: CGFloat, font: UIFont) -> CGSize {
-        let maxSize = CGSize(width: .greatestFiniteMagnitude, height: height)
-        let actualSize = self.boundingRect(with: maxSize, options: [.usesLineFragmentOrigin], attributes: [.font: font], context: nil)
+    func sizeThatFit(width: CGFloat = .greatestFiniteMagnitude, height: CGFloat = .greatestFiniteMagnitude, font: UIFont) -> CGSize {
+        let maxSize = CGSize(width: width, height: height)
+        let actualSize = self.boundingRect(with: maxSize, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [.font: font], context: nil)
         return actualSize.size
     }
 }
