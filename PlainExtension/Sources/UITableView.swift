@@ -48,6 +48,12 @@ public extension UITableView {
 
 extension UICollectionReusableView: ReusableView {}
 
+public extension UICollectionViewLayout {
+    func register<T: UICollectionReusableView>(_: T.Type) {
+        register(T.self, forDecorationViewOfKind: T.defaultReuseIdentifier)
+    }
+}
+
 public extension UICollectionView {
     func register<T: UICollectionViewCell>(_: T.Type) {
         register(T.self, forCellWithReuseIdentifier: T.defaultReuseIdentifier)
