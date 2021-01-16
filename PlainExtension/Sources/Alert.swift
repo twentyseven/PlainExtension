@@ -12,6 +12,12 @@ public extension UIAlertController {
         return UIApplication.shared.keyWindow?.rootViewController?.topMostViewController()
     }
 
+    static func showDebugAlert(title: String? = "DEBUG", message: String?, action: BlankCompletionBlock? = nil) {
+        #if DEBUG
+        showAlert(title: title, message: message, action: action)
+        #endif
+    }
+
     static func showAlert(title: String?, message: String?, action: BlankCompletionBlock? = nil) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
