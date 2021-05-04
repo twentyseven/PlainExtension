@@ -12,9 +12,9 @@ public protocol ReusableView {
     static var defaultReuseIdentifier: String { get }
 }
 
-public extension ReusableView {
+public extension ReusableView where Self: UIView {
     static var defaultReuseIdentifier: String {
-        return String(describing: self)
+        return NSStringFromClass(Self.self)
     }
 }
 
