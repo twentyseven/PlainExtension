@@ -43,10 +43,10 @@ public extension Date {
         return dateFormater.string(from: self)
     }
     
-    func dayDifference(from date: Date) -> Int {
+    func dayDifference(from date: Date, useStartOfDate: Bool = true) -> Int {
         let calendar = Calendar.current
-        let startOfCurrent = calendar.startOfDay(for: self)
-        let startOfDate = calendar.startOfDay(for: date)
+        let startOfCurrent = useStartOfDate ? calendar.startOfDay(for: self) : self
+        let startOfDate = useStartOfDate ? calendar.startOfDay(for: date) : date
         let components = calendar.dateComponents([.day], from: startOfDate, to: startOfCurrent)
         return components.day ?? 0
     }
