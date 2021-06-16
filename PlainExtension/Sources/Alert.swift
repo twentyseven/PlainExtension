@@ -9,7 +9,7 @@
 public extension UIAlertController {
     typealias BlankCompletionBlock = (() -> Void)
     private static var topVC: UIViewController? {
-        return UIApplication.shared.keyWindow?.rootViewController?.topMostViewController()
+        return UIApplication.shared.keyWindow?.rootViewController?.topMostViewController
     }
 
     static func showDebugAlert(title: String? = "DEBUG", message: String?, action: BlankCompletionBlock? = nil) {

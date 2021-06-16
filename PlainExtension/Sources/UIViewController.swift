@@ -18,13 +18,13 @@ public extension UIViewController {
         performSegue(withIdentifier: id, sender: sender)
     }
     
-    func topMostViewController() -> UIViewController? {
+    var topMostViewController: UIViewController? {
         if self.isKind(of: UITabBarController.self) {
-            return (self as! UITabBarController).selectedViewController?.topMostViewController()
+            return (self as! UITabBarController).selectedViewController?.topMostViewController
         } else if self.isKind(of: UINavigationController.self) {
-            return (self as! UINavigationController).visibleViewController?.topMostViewController()
+            return (self as! UINavigationController).visibleViewController?.topMostViewController
         } else if self.presentedViewController != nil {
-            return self.presentedViewController?.topMostViewController()
+            return self.presentedViewController?.topMostViewController
         }
         return self
     }
