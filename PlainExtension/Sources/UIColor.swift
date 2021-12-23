@@ -10,7 +10,7 @@ public extension UIColor {
     /**
     Init UIColor with HEX components
     */
-    static func withHex(string: String, alpha: CGFloat = 1) -> UIColor? {
+    static func hex(string: String, alpha: CGFloat = 1) -> UIColor? {
         guard !string.isEmpty else { return nil }
         var hex = string
         if hex[0] != "#" {
