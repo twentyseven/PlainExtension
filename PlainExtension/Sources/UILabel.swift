@@ -14,4 +14,8 @@ public extension UILabel {
         self.font = font
         self.textColor = textColor
     }
+
+    func setText(_ text: String?) {
+        self.text = text
+    }
 }
